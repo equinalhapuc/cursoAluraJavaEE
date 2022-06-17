@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.RepaintManager;
 import javax.xml.crypto.Data;
 
 @WebServlet("/novaEmpresa")
@@ -37,12 +38,17 @@ public class NovaEmpresaServlet extends HttpServlet {
 		empresa.setDataAbertura(dataAbertura);
 		
 		Banco banco = new Banco();
-		banco.adiciona(empresa);		
+		banco.adiciona(empresa);	
+		
+		req.setAttribute("nome", nomeEmpresa);
 
 		
-		RequestDispatcher rd = req.getRequestDispatcher("/novaEmpresaCriada.jsp");
-		req.setAttribute("nome", nomeEmpresa);
-		rd.forward(req, resp);
+//		RequestDispatcher rd = req.getRequestDispatcher("/listaEmpresas");
+//		req.setAttribute("nome", nomeEmpresa);
+//
+//		rd.forward(req, resp);
+		
+		resp.sendRedirect("listaEmpresas");
 		
 	}
 	

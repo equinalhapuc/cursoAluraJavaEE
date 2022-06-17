@@ -7,6 +7,12 @@ public class Empresa {
 	private Integer id;
 	private String nome;
 	private Date dataAbertura = new Date();
+	private static Integer sequencia = 1;
+	
+	public Empresa() {
+		this.id = sequencia;
+		sequencia++;
+	}
 
 	public Date getDataAbertura() {
 		return dataAbertura;

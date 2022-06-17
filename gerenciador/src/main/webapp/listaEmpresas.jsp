@@ -11,13 +11,20 @@
 <title>Emrpesas Cadastradas</title>
 </head>
 <body>
-
+		<c:if test="${ not empty nome }">
+		Empresa ${ nome } criada com sucesso
+		</c:if>
+		
 	<ul>
-	
+
 		<c:forEach items="${empresas}" var="empresa">
 <!-- 				Equivalente a empresa.getNome() -->
 
-			<li>${empresa.nome} - <fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/></li>
+			<li>
+				${empresa.id } : ${empresa.nome} - <fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/>
+				<a href="/gerenciador/editaEmpresa?id=${empresa.id}"> editar </a>
+				<a href="/gerenciador/removeEmpresa?id=${empresa.id}"> remove </a>
+			</li>
 		</c:forEach>
 	
 	</ul>
