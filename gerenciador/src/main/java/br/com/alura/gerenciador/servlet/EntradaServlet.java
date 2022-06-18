@@ -28,10 +28,8 @@ public class EntradaServlet extends HttpServlet {
 			classe = Class.forName(nomeClasse);
 			acao = (Acao)classe.newInstance();
 		} catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
-			// TODO Auto-generated catch block
 			throw new ServletException(e);
 		}
-		
 		
 		returnAction = acao.executa(request, response);
 			
@@ -46,5 +44,4 @@ public class EntradaServlet extends HttpServlet {
 			response.sendRedirect(view);
 		}
 	}
-
 }
