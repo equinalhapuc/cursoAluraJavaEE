@@ -9,11 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.alura.gerenciador.acoes.alteraEmpresa;
-import br.com.alura.gerenciador.acoes.criaNovaEmrpesa;
-import br.com.alura.gerenciador.acoes.excluiEmpresa;
-import br.com.alura.gerenciador.acoes.listaEmpresas;
-import br.com.alura.gerenciador.acoes.mostraEmpresa;
+import br.com.alura.gerenciador.acoes.Acao;
 
 @WebServlet("/entrada")
 public class EntradaServlet extends HttpServlet {
@@ -22,35 +18,22 @@ public class EntradaServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String paramAcao = request.getParameter("acao");
-		
+		String nomeClasse = "br.com.alura.gerenciador.acoes." + paramAcao;
 		String returnAction = null;
 		
-		switch(paramAcao) {
-		case "listaEmpresas":
-			returnAction = listaEmpresas.executa(request, response);
-			break;
-		
-		case "criaNovaEmpresa":
-			returnAction = criaNovaEmrpesa.executa(request, response);
-			break;
-			
-		case "mostraEmpresa":
-			returnAction = mostraEmpresa.executa(request, response);
-			break;
-			
-		case "alteraEmpresa":
-			returnAction = alteraEmpresa.executa(request, response);
-			break;
-			
-		case "excluiEmpresa":
-			returnAction = excluiEmpresa.executa(request, response);
-				break;
-		case "novaEmpresa":
-			returnAction = "forward:formNovaEmpresa.jsp";
-			break;
-		default:
-			break;
+		// Carrega a classe com o respectivo nome
+		Class classe;
+		Acao acao = null;
+		try {
+			classe = Class.forName(nomeClasse);
+			acao = (Acao)classe.newInstance();
+		} catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
+			// TODO Auto-generated catch block
+			throw new ServletException(e);
 		}
+		
+		
+		returnAction = acao.executa(request, response);
 			
 		String action = returnAction.split(":")[0];
 		String view = returnAction.split(":")[1];

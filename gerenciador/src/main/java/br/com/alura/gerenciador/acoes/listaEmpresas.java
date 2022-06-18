@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.modelo.Banco;
 import br.com.alura.gerenciador.modelo.Empresa;
 
-public class listaEmpresas {
+public class listaEmpresas implements Acao {
 
-	public static String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		Banco banco = new Banco();
 		List<Empresa> empresas = Banco.getEmpresas();
