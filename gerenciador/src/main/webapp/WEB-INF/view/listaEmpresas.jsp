@@ -11,7 +11,7 @@
 <title>Emrpesas Cadastradas</title>
 </head>
 <body>
-	<c:url value="/formNovaEmpresa.jsp" var="novaEmpresa" />
+	<c:url value="/entrada?acao=novaEmpresa" var="novaEmpresa" />
 		<c:if test="${ not empty nome }">
 		Empresa ${ nome } criada com sucesso
 		</c:if>

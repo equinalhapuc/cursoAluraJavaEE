@@ -20,7 +20,7 @@ int id = Integer.parseInt(request.getParameter("id"));
 		Empresa empresa = banco.buscaEmpresa(id);
 		request.setAttribute("empresa", empresa);
 			
-		return "forward:/mostraEmpresa.jsp";
+		return "forward:mostraEmpresa.jsp";
 		
 	}
 

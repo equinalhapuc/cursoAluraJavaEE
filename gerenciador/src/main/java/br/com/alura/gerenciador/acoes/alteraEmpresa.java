@@ -38,7 +38,7 @@ public class alteraEmpresa {
 		empresa.setNome(nomeEmpresa);
 		empresa.setDataAbertura(dataAbertura);
 			
-		return "redirect:listaEmpresas";
+		return "redirect:entrada?acao=listaEmpresas";
 		
 	}
 

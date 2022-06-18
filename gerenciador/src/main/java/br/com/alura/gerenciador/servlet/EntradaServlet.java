@@ -45,6 +45,9 @@ public class EntradaServlet extends HttpServlet {
 		case "excluiEmpresa":
 			returnAction = excluiEmpresa.executa(request, response);
 				break;
+		case "novaEmpresa":
+			returnAction = "forward:formNovaEmpresa.jsp";
+			break;
 		default:
 			break;
 		}
@@ -53,7 +56,7 @@ public class EntradaServlet extends HttpServlet {
 		String view = returnAction.split(":")[1];
 		
 		if(action.equals("forward")) {
-			RequestDispatcher rd = request.getRequestDispatcher(view);
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + view);
 			rd.forward(request, response);
 		}
 		else {
