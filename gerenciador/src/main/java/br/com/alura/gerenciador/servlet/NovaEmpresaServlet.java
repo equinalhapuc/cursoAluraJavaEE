@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.RepaintManager;
 import javax.xml.crypto.Data;
 
+import br.com.alura.gerenciador.modelo.Banco;
+import br.com.alura.gerenciador.modelo.Empresa;
+
 @WebServlet("/novaEmpresa")
 public class NovaEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

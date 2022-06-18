@@ -1,4 +1,4 @@
-package br.com.alura.gerenciador.servlet;
+package br.com.alura.gerenciador.modelo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +22,16 @@ public class Banco {
 		if(empresaOptional.isPresent()) {
 			empresas.remove(empresaOptional.get());
 		}
+	}
+
+	public Empresa buscaEmpresa(int id) {
+		
+		Optional<Empresa> empresaOpt = empresas.stream().filter( e -> e.getId().equals(id)).findFirst();
+		
+		if(empresaOpt.isPresent())
+			return empresaOpt.get();
+		
+		return null;
 	}
 	
 }
