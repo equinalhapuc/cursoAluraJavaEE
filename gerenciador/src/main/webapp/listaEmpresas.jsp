@@ -11,10 +11,12 @@
 <title>Emrpesas Cadastradas</title>
 </head>
 <body>
+	<c:url value="/formNovaEmpresa.jsp" var="novaEmpresa" />
 		<c:if test="${ not empty nome }">
 		Empresa ${ nome } criada com sucesso
 		</c:if>
 		
+	<h2> Lista de Empresas: </h2>
 	<ul>
 
 		<c:forEach items="${empresas}" var="empresa">
@@ -22,12 +24,12 @@
 
 			<li>
 				${empresa.id } : ${empresa.nome} - <fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/>
-				<a href="/gerenciador/mostraEmpresa?id=${empresa.id}"> editar </a>
-				<a href="/gerenciador/removeEmpresa?id=${empresa.id}"> remove </a>
+				<a href="/gerenciador/entrada?acao=mostraEmpresa&id=${empresa.id}"> editar </a>
+				<a href="/gerenciador/entrada?acao=excluiEmpresa&id=${empresa.id}"> remove </a>
 			</li>
 		</c:forEach>
-	
 	</ul>
+	<a href="${novaEmpresa }">Nova</a>
 
 </body>
 </html>

@@ -1,6 +1,8 @@
 package br.com.alura.gerenciador.servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,30 +23,42 @@ public class EntradaServlet extends HttpServlet {
 		
 		String paramAcao = request.getParameter("acao");
 		
+		String returnAction = null;
+		
 		switch(paramAcao) {
 		case "listaEmpresas":
-			listaEmpresas.executa(request, response);
+			returnAction = listaEmpresas.executa(request, response);
 			break;
 		
 		case "criaNovaEmpresa":
-			criaNovaEmrpesa.executa(request, response);
+			returnAction = criaNovaEmrpesa.executa(request, response);
 			break;
 			
 		case "mostraEmpresa":
-			mostraEmpresa.executa(request, response);
+			returnAction = mostraEmpresa.executa(request, response);
 			break;
 			
 		case "alteraEmpresa":
-			alteraEmpresa.executa(request, response);
+			returnAction = alteraEmpresa.executa(request, response);
 			break;
 			
 		case "excluiEmpresa":
-			excluiEmpresa.executa(request, response);
+			returnAction = excluiEmpresa.executa(request, response);
 				break;
 		default:
 			break;
 		}
 			
+		String action = returnAction.split(":")[0];
+		String view = returnAction.split(":")[1];
+		
+		if(action.equals("forward")) {
+			RequestDispatcher rd = request.getRequestDispatcher(view);
+			rd.forward(request, response);
+		}
+		else {
+			response.sendRedirect(view);
+		}
 	}
 
 }

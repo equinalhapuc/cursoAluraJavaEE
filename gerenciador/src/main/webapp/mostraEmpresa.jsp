@@ -9,12 +9,13 @@
 <title>Cadastra nova Empresa</title>
 </head>
 <body>
-<c:url value="/editaEmpresa" var="linkServletNovaEmpresa" />
+<c:url value="/entrada?acao=alteraEmpresa" var="linkServletNovaEmpresa" />
 	<form action="${linkServletNovaEmpresa}" method="post">
 
         Nome: <input type="text" name="nome" value="${empresa.nome }"/>
         Data de Abertura: <input type="text" name="data" value="<fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/>" />
         <input type="hidden" name="id" value="${empresa.id }" />
+        <input type="hidden" name="acao" value="alteraEmpresa" />
         <input type="submit" />
     </form>
 </body>

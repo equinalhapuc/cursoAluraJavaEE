@@ -14,7 +14,7 @@ import br.com.alura.gerenciador.modelo.Empresa;
 
 public class criaNovaEmrpesa {
 
-	public static void executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public static String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String nomeEmpresa = req.getParameter("nome");
 		String paramDataAbertura = req.getParameter("data");
@@ -37,8 +37,7 @@ public class criaNovaEmrpesa {
 		
 		req.setAttribute("nome", nomeEmpresa);
 		
-		resp.sendRedirect("listaEmpresas");
-		
+		return "redirect:entrada?acao=listaEmpresas";
 	}
 
 }

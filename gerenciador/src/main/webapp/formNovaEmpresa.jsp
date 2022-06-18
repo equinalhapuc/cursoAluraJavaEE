@@ -8,11 +8,11 @@
 <title>Cadastra nova Empresa</title>
 </head>
 <body>
-<c:url value="/novaEmpresa" var="linkServletNovaEmpresa" />
+<c:url value="/entrada?acao=criaNovaEmpresa" var="linkServletNovaEmpresa" />
 	<form action="${linkServletNovaEmpresa}" method="post">
 
         Nome: <input type="text" name="nome" />
-        Data de Abertura: <input type="string" name="data" />
+        Data de Abertura: <input type="text" name="data" />
 
         <input type="submit" />
     </form>

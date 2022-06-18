@@ -33,6 +33,8 @@ public class editaEmpresaServlet extends HttpServlet {
 		
 		Banco banco = new Banco();
 		
+		
+		@SuppressWarnings("unused")
 		Date dataAbertura = null;
 		
 		try {
