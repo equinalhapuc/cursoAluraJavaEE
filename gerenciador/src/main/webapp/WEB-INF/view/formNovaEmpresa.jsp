@@ -8,6 +8,7 @@
 <title>Cadastra nova Empresa</title>
 </head>
 <body>
+<c:import url="logout-parcial.jsp" />
 <c:url value="/entrada?acao=criaNovaEmpresa" var="linkServletNovaEmpresa" />
 	<form action="${linkServletNovaEmpresa}" method="post">
 

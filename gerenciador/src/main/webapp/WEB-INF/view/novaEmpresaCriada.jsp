@@ -9,6 +9,7 @@
 <title>Confirmação</title>
 </head>
 <body>
+<c:import url="logout-parcial.jsp" />
 	<c:if test="${ not empty nome }">
 		Empresa ${ nome } criada com sucesso
 	</c:if>
