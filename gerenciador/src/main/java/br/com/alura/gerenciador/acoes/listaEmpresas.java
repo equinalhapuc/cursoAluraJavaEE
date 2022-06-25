@@ -13,15 +13,15 @@ import br.com.alura.gerenciador.modelo.Empresa;
 
 public class listaEmpresas implements Acao {
 
-	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-			
+	public String executa(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+
 		List<Empresa> empresas = Banco.getEmpresas();
-		
+
 		request.setAttribute("empresas", empresas);
-			
+
 		return "forward:listaEmpresas.jsp";
-		
+
 	}
 
-	
 }
